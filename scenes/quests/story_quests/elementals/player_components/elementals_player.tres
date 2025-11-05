@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://qn5jl75eq8ud" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_attack_02.png" id="2_6ds5a"]
 [ext_resource type="Texture2D" uid="uid://5f02cpimf33d" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_defeated.png" id="3_1nxtk"]
 [ext_resource type="Texture2D" uid="uid://gf2vw86eyih3" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_idle.png" id="4_kylhc"]
-[ext_resource type="Texture2D" uid="uid://cpvm0v2jhi5wk" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_walk.png" id="5_2c7k8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg72c"]
 atlas = ExtResource("1_hx8cu")
@@ -66,16 +65,18 @@ region = Rect2(192, 0, 192, 192)
 atlas = ExtResource("4_kylhc")
 region = Rect2(0, 0, 192, 192)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ccot1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_28wor"]
-atlas = ExtResource("5_2c7k8")
+atlas = SubResource("CompressedTexture2D_ccot1")
 region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nl6p"]
-atlas = ExtResource("5_2c7k8")
+atlas = SubResource("CompressedTexture2D_ccot1")
 region = Rect2(192, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ctslx"]
-atlas = ExtResource("5_2c7k8")
+atlas = SubResource("CompressedTexture2D_ccot1")
 region = Rect2(384, 0, 192, 192)
 
 [resource]

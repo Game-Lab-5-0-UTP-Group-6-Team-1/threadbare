@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dbxb1cmbpp84w"]
+[gd_scene load_steps=14 format=4 uid="uid://dbxb1cmbpp84w"]
 
 [ext_resource type="TileSet" uid="uid://cuympexmdgy2h" path="res://scenes/quests/story_quests/elementals/elementals.tres" id="1_72iks"]
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="1_wlthc"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://lop41t31xp8c" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player.tres" id="3_uvnn5"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="4_3p2up"]
 [ext_resource type="Resource" uid="uid://da0pfhsbplbj7" path="res://scenes/quests/story_quests/elementals/0_intro/intro_components/elementals_intro.dialogue" id="5_f0gr3"]
+[ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="5_uvnn5"]
 [ext_resource type="PackedScene" uid="uid://v3usqiwy5wpr" path="res://scenes/game_elements/props/decoration/rock/rock.tscn" id="6_sg1ki"]
 
 [sub_resource type="Animation" id="Animation_xifw5"]
@@ -98,6 +99,9 @@ _data = {
 &"walk_on": SubResource("Animation_knvh5")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2up"]
+size = Vector2(53, 161)
+
 [node name="Intro" type="Node2D"]
 
 [node name="TileMapLayers" type="Node2D" parent="."]
@@ -134,12 +138,26 @@ position = Vector2(400, 349)
 sprite_frames = ExtResource("3_uvnn5")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.87940866
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OnTheGround"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_b3e16")
 }
+
+[node name="Jozu" type="CharacterBody2D" parent="OnTheGround"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Jozu"]
+position = Vector2(119.5, 137.5)
+shape = SubResource("RectangleShape2D_3p2up")
+
+[node name="AnimatedSpriteD" type="AnimatedSprite2D" parent="OnTheGround/Jozu"]
+position = Vector2(119, 133)
+rotation = 6.2831855
+sprite_frames = ExtResource("5_uvnn5")
+animation = &"walk_side"
+frame_progress = 0.5309064
 
 [node name="ScreenOverlay" type="CanvasLayer" parent="."]
 
