@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=14 format=4 uid="uid://dbxb1cmbpp84w"]
-=======
-[gd_scene load_steps=15 format=4 uid="uid://dbxb1cmbpp84w"]
->>>>>>> 88e0ce46 (agregado de intro)
+[gd_scene load_steps=16 format=4 uid="uid://bpua6ayucmhd7"]
 
 [ext_resource type="TileSet" uid="uid://cuympexmdgy2h" path="res://scenes/quests/story_quests/elementals/elementals.tres" id="1_72iks"]
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="1_wlthc"]
 [ext_resource type="Texture2D" uid="uid://c7th0bmt5cn1e" path="res://scenes/quests/story_quests/elementals/0_intro/portal.png" id="2_3p2up"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="4_3p2up"]
-[ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="4_f0gr3"]
 [ext_resource type="Resource" uid="uid://da0pfhsbplbj7" path="res://scenes/quests/story_quests/elementals/0_intro/intro_components/elementals_intro.dialogue" id="5_f0gr3"]
 [ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="5_uvnn5"]
 [ext_resource type="PackedScene" uid="uid://v3usqiwy5wpr" path="res://scenes/game_elements/props/decoration/rock/rock.tscn" id="6_sg1ki"]
@@ -144,7 +139,7 @@ y_sort_enabled = true
 [node name="Character" type="AnimatedSprite2D" parent="OnTheGround"]
 z_index = 1
 position = Vector2(-71, 429)
-sprite_frames = ExtResource("4_f0gr3")
+sprite_frames = ExtResource("5_uvnn5")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.87940866
