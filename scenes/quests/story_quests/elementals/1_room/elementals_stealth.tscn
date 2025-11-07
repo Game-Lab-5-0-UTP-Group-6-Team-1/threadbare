@@ -42,8 +42,7 @@ bullet_scene = ExtResource("3_qv35b")
 position = Vector2(1.5258789e-05, -74)
 rotation = 6.2831855
 sprite_frames = ExtResource("14_tjek1")
-animation = &"idle"
-frame_progress = 0.041497856
+animation = &"walk_side"
 
 [node name="Camera2D" type="Camera2D" parent="OnTheGround/Jozu"]
 process_mode = 3

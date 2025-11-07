@@ -1,4 +1,7 @@
+##cambio mio
+class_name Jozu
 extends CharacterBody2D
+
 
 # Arrastra tu escena de bala aquí desde el Inspector
 @export var bullet_scene: PackedScene
