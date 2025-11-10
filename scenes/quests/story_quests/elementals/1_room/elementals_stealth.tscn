@@ -1,14 +1,21 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3kg1e473t6cx"]
+[gd_scene load_steps=10 format=4 uid="uid://c3kg1e473t6cx"]
 
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="2_fjkbw"]
 [ext_resource type="PackedScene" uid="uid://dbdkhhbwd32lu" path="res://scenes/quests/story_quests/elementals/player_components/Fireball/bullet.tscn" id="3_qv35b"]
 [ext_resource type="PackedScene" uid="uid://dn5eeloem4mw3" path="res://scenes/quests/story_quests/elementals/1_room/stealth_components/enemy1.tscn" id="4_itj0g"]
 [ext_resource type="PackedScene" uid="uid://k6hg11uhespi" path="res://scenes/quests/story_quests/elementals/player_components/Health_Ui.tscn" id="4_iy4d0"]
+[ext_resource type="PackedScene" uid="uid://cg7gvwluyx3xp" path="res://scenes/game_elements/characters/enemies/guard/elementals_guard.tscn" id="6_ky21q"]
 [ext_resource type="Script" uid="uid://cxchosgwf8kr2" path="res://scenes/quests/story_quests/elementals/1_room/jozu.gd" id="13_edctu"]
 [ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="14_tjek1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5amn"]
 size = Vector2(20, 54.000008)
+
+[sub_resource type="Curve2D" id="Curve2D_ky21q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 0)
+}
+point_count = 2
 
 [node name="StealthTemplateLevel" type="Node2D"]
 y_sort_enabled = true
@@ -60,8 +67,16 @@ position = Vector2(0, -1)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_q5amn")
 
-[node name="enemy1" parent="OnTheGround" instance=ExtResource("4_itj0g")]
-position = Vector2(761, 344)
+[node name="enemy1" parent="OnTheGround" groups=["guard_enemy"] instance=ExtResource("4_itj0g")]
+position = Vector2(1243, 441)
+
+[node name="Guard" parent="OnTheGround" instance=ExtResource("6_ky21q")]
+position = Vector2(547, 434)
+show_debug_info = false
+
+[node name="Guard-PatrolPath" type="Path2D" parent="OnTheGround"]
+position = Vector2(547, 434)
+curve = SubResource("Curve2D_ky21q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)

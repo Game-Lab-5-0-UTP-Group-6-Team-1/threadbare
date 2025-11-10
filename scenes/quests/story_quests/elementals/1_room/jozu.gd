@@ -1,5 +1,5 @@
+class_name JozuPlayer
 extends CharacterBody2D
-
 # Arrastra tu escena de bala aquí desde el Inspector
 @export var bullet_scene: PackedScene
 @export var speed: float = 250.0

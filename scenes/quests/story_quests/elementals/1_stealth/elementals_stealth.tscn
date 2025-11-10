@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://pejbbuhg5b1n" path="res://scenes/quests/story_quests/elementals/1_stealth/stealth_components/elementals_collected.dialogue" id="12_5hy4y"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="13_aayr8"]
 [ext_resource type="Resource" uid="uid://ncmlwwqi6urq" path="res://scenes/quests/story_quests/elementals/1_stealth/stealth_components/elementals_stealth.dialogue" id="14_i3n0s"]
-[ext_resource type="Script" uid="uid://cpnmt7wusilyl" path="res://scenes/quests/story_quests/elementals/1_stealth/jozu.gd" id="15_1p441"]
+[ext_resource type="Script" path="res://scenes/quests/story_quests/elementals/1_stealth/jozu.gd" id="15_1p441"]
 [ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="16_wve6w"]
 
 [sub_resource type="Curve2D" id="Curve2D_6ja7q"]
