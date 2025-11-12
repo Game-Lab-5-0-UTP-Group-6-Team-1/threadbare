@@ -1,9 +1,19 @@
 ##cambio mio
-class_name Jozu
+class_name Jozu 
 extends CharacterBody2D
 
 
-# Arrastra tu escena de bala aquí desde el Inspector
+
+
+enum Mode { COZY, FIGHTING }
+var mode: Mode = Mode.COZY
+
+##para la vida
+var max_health := 6
+var current_health := max_health
+
+	
+# Arradstra tu escena de bala aquí desde el Inspector
 @export var bullet_scene: PackedScene
 @export var speed: float = 250.0
 
@@ -115,6 +125,7 @@ func die():
 
 # --- FUNCIÓN DE DISPARO ---
 func shoot(shoot_direction: Vector2):
+	print("Disparando en dirección: ", shoot_direction)
 	if not bullet_scene:
 		print("ERROR: No se asignó la 'Bullet Scene' en el Inspector.")
 		return
@@ -137,3 +148,15 @@ func shoot(shoot_direction: Vector2):
 		bullet.rotation_degrees = 90
 	
 	get_tree().current_scene.add_child(bullet)
+	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print ("me pegaron")
+	# Verifica si lo que colisionó pdertenece al grupo de proyectiles enemigos
+	if body.is_in_group("enemy_projectile"):
+		print("¡Recibí daño de un proyectil enemigo!")
+		take_damage(1)
+		body.queue_free()
+	else:
+		print("No es un proyectil enemigo, grupos:", body.get_groups())

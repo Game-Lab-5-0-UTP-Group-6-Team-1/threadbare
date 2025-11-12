@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://k6hg11uhespi"]
 
-[ext_resource type="Script" uid="uid://gs7gegwo3ff4" path="res://scenes/quests/story_quests/elementals/player_components/Health_Ui.gd" id="1_gq351"]
+[ext_resource type="Script" path="res://scenes/quests/story_quests/elementals/player_components/Health_Ui.gd" id="1_gq351"]
 [ext_resource type="Texture2D" uid="uid://dss4018ukk0t" path="res://scenes/quests/story_quests/elementals/player_components/HeartContainer/health bar1.png" id="2_3x7ts"]
 [ext_resource type="Texture2D" uid="uid://ba5s65tpebhih" path="res://scenes/quests/story_quests/elementals/player_components/HeartContainer/health bar2.png" id="3_l7qgf"]
 [ext_resource type="Texture2D" uid="uid://cngqfk1tp0cuo" path="res://scenes/quests/story_quests/elementals/player_components/HeartContainer/health bar3.png" id="4_xkeun"]

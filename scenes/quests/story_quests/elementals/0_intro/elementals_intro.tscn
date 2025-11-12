@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bpua6ayucmhd7"]
+[gd_scene load_steps=15 format=4 uid="uid://bpua6ayucmhd7"]
 
 [ext_resource type="TileSet" uid="uid://cuympexmdgy2h" path="res://scenes/quests/story_quests/elementals/elementals.tres" id="1_72iks"]
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="1_wlthc"]
@@ -101,9 +101,6 @@ _data = {
 &"walk_on": SubResource("Animation_knvh5")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p2up"]
-size = Vector2(53, 161)
-
 [node name="Intro" type="Node2D"]
 
 [node name="TileMapLayers" type="Node2D" parent="."]
@@ -149,19 +146,6 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_b3e16")
 }
-
-[node name="Jozu" type="CharacterBody2D" parent="OnTheGround"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Jozu"]
-position = Vector2(119.5, 137.5)
-shape = SubResource("RectangleShape2D_3p2up")
-
-[node name="AnimatedSpriteD" type="AnimatedSprite2D" parent="OnTheGround/Jozu"]
-position = Vector2(119, 133)
-rotation = 6.2831855
-sprite_frames = ExtResource("5_uvnn5")
-animation = &"walk_side"
-frame_progress = 0.5309064
 
 [node name="ScreenOverlay" type="CanvasLayer" parent="."]
 

@@ -42,11 +42,13 @@ func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("Bala: ¡Le di a un enemigo!")
 		
-		if body.has_method("die"):
-			body.die() 
-		
-		queue_free() # Se destruye al instante
-		return
+	if body.has_method("take_damage"):
+		body.take_damage(1)  # 🔹 Le resta 1 de vida
+	elif body.has_method("die"):
+		body.die()           # 🔹 Si no tiene salud, usa die() directo
+	
+	queue_free()
+	return
 		
 	# 4. Si choca con cualquier otra cosa (que no sea el jugador)
 	queue_free()

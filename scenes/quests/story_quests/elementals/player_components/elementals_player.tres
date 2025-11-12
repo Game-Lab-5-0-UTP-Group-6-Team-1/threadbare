@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bv115funoacbd" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_attack_01.png" id="1_hx8cu"]
 [ext_resource type="Texture2D" uid="uid://qn5jl75eq8ud" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_attack_02.png" id="2_6ds5a"]
 [ext_resource type="Texture2D" uid="uid://5f02cpimf33d" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_defeated.png" id="3_1nxtk"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://gf2vw86eyih3" path="res://scenes/quests/story_quests/elementals/player_components/elementals_player_idle.png" id="4_kylhc"]
-=======
 [ext_resource type="Texture2D" uid="uid://drwjxshsrgmhi" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota_walk_side1.png" id="4_2c7k8"]
 [ext_resource type="Texture2D" uid="uid://d0g3rahu81lqg" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota idle.png" id="4_hrw4x"]
 [ext_resource type="Texture2D" uid="uid://yf18081g3seb" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota_walk_side2.png" id="5_hrw4x"]
@@ -13,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cyp0bhgfrfg0o" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota_walk_side4.png" id="7_15g67"]
 [ext_resource type="Texture2D" uid="uid://bke1via0p4avv" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota_walk_side5.png" id="8_pov2r"]
 [ext_resource type="Texture2D" uid="uid://cfifftckq0ten" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/prota_walk_side6.png" id="9_7eb53"]
->>>>>>> 88e0ce46 (agregado de intro)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yg72c"]
 atlas = ExtResource("1_hx8cu")
@@ -67,37 +63,9 @@ region = Rect2(0, 192, 192, 192)
 atlas = ExtResource("4_hrw4x")
 region = Rect2(192, 0, 192, 192)
 
-<<<<<<< HEAD
-[sub_resource type="AtlasTexture" id="AtlasTexture_0myta"]
-atlas = ExtResource("4_kylhc")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbvnd"]
-atlas = ExtResource("4_kylhc")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1iol"]
-atlas = ExtResource("4_kylhc")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ccot1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_28wor"]
-atlas = SubResource("CompressedTexture2D_ccot1")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nl6p"]
-atlas = SubResource("CompressedTexture2D_ccot1")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctslx"]
-atlas = SubResource("CompressedTexture2D_ccot1")
-region = Rect2(384, 0, 192, 192)
-=======
 [sub_resource type="AtlasTexture" id="AtlasTexture_7eb53"]
 atlas = ExtResource("4_hrw4x")
 region = Rect2(192, 192, 192, 192)
->>>>>>> 88e0ce46 (agregado de intro)
 
 [resource]
 animations = [{

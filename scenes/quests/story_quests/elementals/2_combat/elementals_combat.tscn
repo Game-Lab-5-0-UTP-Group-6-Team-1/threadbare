@@ -24,7 +24,6 @@ y_sort_enabled = true
 
 [node name="FillGameLogic" type="Node" parent="."]
 script = ExtResource("1_f8w7y")
-intro_dialogue = ExtResource("2_k3175")
 metadata/_custom_type_script = "uid://cp54mgi54nywo"
 
 [node name="TileMapLayers" type="Node2D" parent="."]
