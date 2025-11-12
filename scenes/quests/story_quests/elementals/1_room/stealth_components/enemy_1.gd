@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Enemy
 
 # --- Estados del Enemigo ---
-# --- AÑADIDO: El nuevo estado "DEFEATED" ---
 enum State { IDLE, CHASING, ATTACKING, COOLDOWN, DEFEATED }
 
 # --- Variables de Comportamiento ---
@@ -11,10 +10,14 @@ enum State { IDLE, CHASING, ATTACKING, COOLDOWN, DEFEATED }
 @export var attack_damage: int = 1
 @export var attack_cooldown: float = 2.0 
 
-# --- Referencias de Nodos ---
+# --- ¡NUEVAS VARIABLES DE VIDA! ---
+@export var max_health: int = 3 # ¡Muere a los 3 golpes!
+var current_health: int
+# ---------------------------------
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var detection_area: Area2D = $DetectionArea
-# --- Variables Internas ---
+@onready var detection_area: Area2D = $DetectionArea 
+
 var player: CharacterBody2D = null
 var is_attacking: bool = false 
 
@@ -23,19 +26,21 @@ var current_state: State = State.IDLE
 var cooldown_counter: float = 0.0
 
 func _ready():
+	# --- ¡NUEVO! ---
+	# Establece la vida al máximo al empezar
+	current_health = max_health
+	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
+	add_to_group("enemy")
 
 func _physics_process(delta):
 	
-	# --- AÑADIDO: Comprobación de Muerte ---
-	# Si el enemigo está muerto, no hace nada más.
 	if current_state == State.DEFEATED:
-		velocity = Vector2.ZERO # Asegurarse de que no se deslice
+		velocity = Vector2.ZERO 
 		move_and_slide()
-		return # No ejecutar el resto de la lógica
+		return 
 
-	# (El resto de tu lógica de cooldown sigue aquí)
 	if current_state == State.COOLDOWN:
 		cooldown_counter += delta
 		if cooldown_counter >= attack_cooldown:
@@ -47,7 +52,6 @@ func _physics_process(delta):
 	if new_state != current_state:
 		current_state = new_state
 
-	# --- Actuar según el estado ---
 	match current_state:
 		State.IDLE:
 			animated_sprite.play("idle")
@@ -75,16 +79,12 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			animated_sprite.play("idle") 
 		
-		# --- AÑADIDO: Estado de Muerte ---
 		State.DEFEATED:
 			velocity = Vector2.ZERO
 			
-
 	move_and_slide()
 
-# --- MODIFICADO ---
 func get_new_state() -> State:
-	# ¡Si está muerto, atacando o en cooldown, NO interrumpir!
 	if current_state == State.DEFEATED or is_attacking or current_state == State.COOLDOWN:
 		return current_state
 		
@@ -105,18 +105,14 @@ func _do_damage():
 			player.take_damage(attack_damage)
 			print("Enemigo: ¡GOLPE!")
 
-# --- MODIFICADO ---
 func _on_animation_finished():
 	if animated_sprite.animation == "attack":
 		current_state = State.COOLDOWN
 		is_attacking = false
 	
-	# --- AÑADIDO ---
-	# Si la animación de "defeated" (derrotado) termina...
 	if animated_sprite.animation == "defeated":
-		queue_free() # ...elimina al enemigo de la escena.
+		queue_free() 
 
-# (Las funciones de Area2D siguen igual)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body 
@@ -127,25 +123,46 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null 
 		print("Enemigo: ¿A dónde fue?")
 
-# ---
-# --- ¡NUEVA FUNCIÓN DE MORIR! ---
-# ---
-# Esta función puede ser llamada por una bala o cualquier otra cosa
-func die():
-	# Solo puede morir una vez
+# --- ¡NUEVA FUNCIÓN DE PARPADEO! ---
+func flash_red():
+	var tween = create_tween()
+	tween.tween_property(animated_sprite, "modulate", Color(1, 0, 0), 0.0)
+	tween.tween_interval(0.1)
+	tween.tween_property(animated_sprite, "modulate", Color(1, 1, 1), 0.0)
+
+# --- ¡NUEVA FUNCIÓN DE RECIBIR DAÑO! ---
+func take_damage(amount: int):
 	if current_state == State.DEFEATED:
 		return
 
-	# 1. Poner el estado en DEFEATED
+	current_health -= amount
+	print("Vida del enemigo: ", current_health)
+
+	if current_health <= 0:
+		die()
+	else:
+		flash_red()
+
+# --- ¡Función de Morir! ---
+func die():
+	if current_state == State.DEFEATED:
+		return
+
 	current_state = State.DEFEATED
 	
-	# 2. Desactivar colisiones para que el jugador pase
 	$CollisionShape2D.disabled = true
-	# 3. Desactivar el área de detección
 	detection_area.monitoring = false
 	
-	# 4. Reproducir la animación de muerte
 	animated_sprite.play("defeated")
 	
-	# La función _on_animation_finished() se encargará
-	# de llamar a queue_free() cuando termine.
+# --- ¡ESTA ES LA FUNCIÓN CORREGIDA! ---
+# (Se eliminó el 'pass' extra y se corrigió la indentación)
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	# Comprobamos si el 'body' que entró está en el grupo "bullet"
+	if body.is_in_group("bullet"):
+	
+		# 1. Llama a la función de morir (de forma segura)
+		call_deferred("take_damage",1)
+	
+		# 2. Destruye la bala que nos golpeó
+		body.queue_free()

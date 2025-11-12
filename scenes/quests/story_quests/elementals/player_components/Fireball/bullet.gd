@@ -1,52 +1,49 @@
 extends RigidBody2D
 
-var speed: float = 600.0
-var direction: Vector2 = Vector2.ZERO # El jugador (Jozu) asignará esto
+var speed: float = 900.0
+var direction: Vector2 = Vector2.ZERO 
+
+@export var min_speed_to_die: float = 10.0 
 
 @onready var lifetime_timer: Timer = $LifetimeTimer
 @onready var animated_sprite: AnimatedSprite2D = $VisibleThings/AnimatedSprite2D
 
 func _ready():
-	# --- ¡CONECTA ESTAS SEÑALES EN EL EDITOR! ---
-	# 1. Conecta 'body_entered' (del RigidBody2D) a '_on_body_entered'
-	# 2. Conecta 'timeout' (del LifetimeTimer) a '_on_lifetime_timer_timeout'
+	# --- ¡CAMBIO! ---
+	# Añadimos la bala al grupo "bullet"
+	add_to_group("bullet")
+
+	# (Conecta las señales 'body_entered' y 'timeout' en el editor)
 	
 	animated_sprite.play("default")
 	lifetime_timer.start()
 	linear_velocity = direction * speed
 
 func _physics_process(delta):
-	pass # El motor de física hace el trabajo
+	if linear_velocity.length_squared() > 0:
+		rotation = linear_velocity.angle()
+	
+	if linear_velocity.length_squared() < min_speed_to_die * min_speed_to_die:
+		queue_free() 
 
 func _on_lifetime_timer_timeout():
-	queue_free() # Destruye el proyectil
+	queue_free() 
 
-# --- ¡FUNCIÓN MODIFICADA! ---
+# --- ¡FUNCIÓN SIMPLIFICADA! ---
+# La bala ya NO se preocupa por los enemigos.
 func _on_body_entered(body):
 	
 	# 1. Ignorar al jugador
 	if body.is_in_group("player"):
 		return 
-	
+		
+		
+
+	# 2. Comprobar si es un MURO (walls)
 	if body.is_in_group("walls"):
-		print("Bala: Choqué con un muro. Desapareceré en 2 segundos.")
+		print("Bala: ¡Reboté en un muro!")
+		# Dejamos que el PhysicsMaterial haga el rebote
+		return 
 		
-		
-		# 3. Reiniciamos el temporizador a 2 segundos
-		lifetime_timer.stop() # Detiene el temporizador de vida original
-		lifetime_timer.wait_time = 0.2 # Establece el nuevo tiempo
-		lifetime_timer.start() # Inicia la cuenta atrás de 2 segundos
-		
-		return # No seguir comprobando
-	# 3. Comprobar si es un ENEMIGO (usando el grupo "enemy")
-	if body.is_in_group("enemy"):
-		print("Bala: ¡Le di a un enemigo!")
-		
-		if body.has_method("die"):
-			body.die() 
-		
-		queue_free() # Se destruye al instante
-		return
-		
-	# 4. Si choca con cualquier otra cosa (que no sea el jugador)
+	# 3. Si choca con cualquier otra cosa (que no sea player, wall)
 	queue_free()
