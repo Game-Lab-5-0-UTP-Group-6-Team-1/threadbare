@@ -74,14 +74,16 @@ var _player: Node = null
 
 # --- INSTA-KILL POR RETENCIÓN ---
 @export_category("Attack")
-@export var instakill_delay: float = 1.5    # segundos que el jugador debe permanecer en alerta antes del instakill
+@export var instakill_delay: float = 1.5
 var _instakill_timer: float = 0.0
 var _has_instakilled: bool = false
-
+var _player_in_sight: bool = false
 # --- ATAQUE / INSTA-KILL ---
 @export var attack_range: float = 24.0        # distancia para golpear (ajusta)
 @export var attack_cooldown: float = 0.5      # segundos entre ataques (evita multi-hit)
 var _attack_timer: float = 0.0
+# estado auxiliar para evitar que el guard siga atacando mientras prepara el instakill
+var _instakill_pending: bool = false
 
 # Node references (onready)
 @onready var detection_area: Area2D = %DetectionArea
@@ -145,12 +147,31 @@ func _process(delta: float) -> void:
 	if guard_movement:
 		guard_movement.move()
 
+	# El guard no intenta instakill por entrar en ALERTED; solo atacará si la barra llega a 1.0
 	if state == State.ALERTED:
 		_attack_player(delta)
 	else:
 		_update_player_awareness(delta)
 
 	_update_animation()
+	if _player and is_instance_valid(_player):
+		var distance = global_position.distance_to(_player.global_position)
+
+		# Si el jugador está cerca (ajusta el rango si quieres)
+		if distance < 80:
+			_player_in_sight = true
+		else:
+			_player_in_sight = false
+
+		# Si el jugador está a la vista, empieza el conteo
+		if _player_in_sight and not _has_instakilled:
+			_instakill_timer += delta
+			if _instakill_timer >= instakill_delay:
+				_apply_instakill()
+				_has_instakilled = true
+		else:
+			_instakill_timer = 0.0
+
 
 	# Manejo del temporizador de instakill: solo cuenta mientras esté ALERTED y haya player válido
 	if state == State.ALERTED and not _has_instakilled and _player and is_instance_valid(_player):
@@ -188,18 +209,43 @@ func _process_state() -> void:
 
 # Player awareness bar logic
 func _update_player_awareness(delta: float) -> void:
+	# comprobamos visibilidad segura
 	var player_in_sight: bool = _player != null and not _is_sight_to_point_blocked(_player.global_position)
 
-	# Smoothly move awareness value toward max or zero
+	# movimiento suave de la barra
 	player_awareness.value = move_toward(
 		player_awareness.value, player_awareness.max_value if player_in_sight else 0.0, delta
 	)
 	player_awareness.visible = player_awareness.ratio > 0.0
 	player_awareness.modulate.a = clamp(player_awareness.ratio, 0.5, 1.0)
 
+	# Cuando la barra llega a 1.0: iniciamos conteo para instakill (solo la primera vez)
 	if player_awareness.ratio >= 1.0:
-		state = State.ALERTED
-		player_detected.emit(_player)
+		# Aseguramos que estamos en ALERTED (visual) y que hay línea de visión
+		if not (state == State.ALERTED):
+			state = State.ALERTED
+			player_detected.emit(_player)
+
+		# Si no habíamos iniciado el timer, lo inicializamos y marcamos pendiente
+		if _instakill_timer <= 0.0 and not _has_instakilled:
+			_instakill_timer = instakill_delay
+			_instakill_pending = true
+			# Detenemos movimiento por si acaso (teleport será inmediato cuando timer termine)
+			if guard_movement:
+				guard_movement.stop_moving()
+		# descontar tiempo solo si hay visión real del jugador
+		if player_in_sight and not _has_instakilled and _instakill_pending:
+			_instakill_timer = max(0.0, _instakill_timer - delta)
+			if _instakill_timer <= 0.0:
+				_apply_instakill()
+				_has_instakilled = true
+				_instakill_pending = false
+	else:
+		# si la barra baja, reiniciamos el timer para que el jugador tenga que quedarse
+		_instakill_timer = 0.0
+		_instakill_pending = false
+
+
 
 
 # Animation updates
@@ -283,15 +329,17 @@ func _set_state(new_state: State) -> void:
 			player_awareness.tint_progress = Color.RED
 			player_awareness.visible = true
 
-			# Inicializa temporizador de instakill (no mata inmediatamente)
 			_instakill_timer = instakill_delay
 			_has_instakilled = false
 
 		State.INVESTIGATING:
-			if guard_movement:
-				guard_movement.start_moving_now()
+			guard_movement.start_moving_now()
 			breadcrumbs.push_back(global_position)
 
+	# --- 🔽 AGREGA ESTO AQUÍ, no fuera ---
+	if new_state in [State.PATROLLING, State.DETECTING, State.INVESTIGATING, State.RETURNING]:
+		_has_instakilled = false
+		_attack_timer = 0.0
 
 # Debug helpers
 func debug_property(property_name: String) -> void:
@@ -471,23 +519,24 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 # Instakill / damage functions
 func _apply_instakill() -> void:
-	if _player and is_instance_valid(_player):
-		if _player.has_method("take_damage"):
-			_player.take_damage(9999) # instakill
-		else:
-			# fallback if player uses different system
-			if _player.has_variable("current_health_halves"):
-				_player.current_health_halves = 0
-				if _player.has_method("die"):
-					_player.die()
-			elif _player.has_method("die"):
-				_player.die()
+	if not _player or not is_instance_valid(_player):
+		return
 
-		# If you have a scene switcher, use it; otherwise you can reload manually.
-		if Engine.has_singleton("SceneSwitcher"):
-			SceneSwitcher.reload_with_transition(Transition.Effect.FADE, Transition.Effect.FADE)
-		else:
-			get_tree().reload_current_scene()
+	# Teletransporta al guard justo encima del jugador
+	global_position = _player.global_position + Vector2(0, -10)
+
+	# Reproduce animación o sonido si tienes
+	if animation_player:
+		animation_player.play("alerted")
+
+	# Mata o reinicia escena
+	if _player.has_method("die"):
+		_player.die()
+	elif _player.has_method("take_damage"):
+		_player.take_damage(9999)
+	else:
+		get_tree().reload_current_scene()
+
 
 
 func do_damage() -> void:
@@ -498,17 +547,36 @@ func do_damage() -> void:
 
 # Attack routine called when ALERTED
 func _attack_player(delta: float) -> void:
-	_attack_timer = max(0.0, _attack_timer - delta)
+	# Si estamos preparando un instakill, no hacemos el ataque normal
+	if _instakill_pending or _has_instakilled:
+		return
+
+	# No hacer nada si no hay jugador válido
 	if not _player or not is_instance_valid(_player):
 		return
 
+	# Actualiza el temporizador de cooldown
+	if _attack_timer > 0.0:
+		_attack_timer -= delta
+		return  # aún está en enfriamiento, no puede atacar de nuevo
+
+	# Calcula distancia al jugador
 	var dist := global_position.distance_to(_player.global_position)
-	if dist <= attack_range and _attack_timer <= 0.0:
+
+	# Si está dentro del rango de ataque
+	if dist <= attack_range:
+		# Realiza el ataque una sola vez
 		if _player.has_method("take_damage"):
 			_player.take_damage(9999)
+		elif _player.has_variable("current_health_halves"):
+			_player.current_health_halves = 0
+			if _player.has_method("die"):
+				_player.die()
 		else:
-			if _player.has_variable("current_health_halves"):
-				_player.current_health_halves = 0
-				if _player.has_method("die"):
-					_player.die()
+			get_tree().reload_current_scene()
+
+		print("⚔ Guardia atacó una vez!")
+
+		# Evita más ataques hasta que vuelva a DETECTING o INVESTIGATING
 		_attack_timer = attack_cooldown
+		_has_instakilled = true  # marcamos que ya atacó una vez

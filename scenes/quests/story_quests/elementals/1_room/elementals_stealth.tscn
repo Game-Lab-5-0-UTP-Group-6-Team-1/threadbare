@@ -70,8 +70,9 @@ shape = SubResource("RectangleShape2D_q5amn")
 [node name="enemy1" parent="OnTheGround" groups=["guard_enemy"] instance=ExtResource("4_itj0g")]
 position = Vector2(1243, 441)
 
-[node name="Guard" parent="OnTheGround" instance=ExtResource("6_ky21q")]
+[node name="Guard" parent="OnTheGround" node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_ky21q")]
 position = Vector2(547, 434)
+patrol_path = NodePath("../Guard-PatrolPath")
 show_debug_info = false
 
 [node name="Guard-PatrolPath" type="Path2D" parent="OnTheGround"]
