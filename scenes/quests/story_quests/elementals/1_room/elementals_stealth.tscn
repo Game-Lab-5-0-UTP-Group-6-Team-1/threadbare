@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="2_fjkbw"]
 [ext_resource type="PackedScene" uid="uid://c2dk88w1i3yey" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/jozu.tscn" id="2_iy4d0"]
-[ext_resource type="PackedScene" uid="uid://dbdkhhbwd32lu" path="res://scenes/quests/story_quests/elementals/player_components/Fireball/bullet.tscn" id="3_qv35b"]
 [ext_resource type="PackedScene" uid="uid://dn5eeloem4mw3" path="res://scenes/quests/story_quests/elementals/1_room/stealth_components/enemy1.tscn" id="4_itj0g"]
 [ext_resource type="PackedScene" uid="uid://k6hg11uhespi" path="res://scenes/quests/story_quests/elementals/player_components/Health_Ui.tscn" id="4_iy4d0"]
+[ext_resource type="PackedScene" uid="uid://bjbh1ows4s0jt" path="res://scenes/quests/story_quests/elementals/1_room/stealth_components/throwing_enemy_elementals.tscn" id="5_qv35b"]
 
 [node name="StealthTemplateLevel2" type="Node2D"]
 y_sort_enabled = true
@@ -30,7 +30,6 @@ position = Vector2(10, 14)
 
 [node name="Jozu" parent="OnTheGround" instance=ExtResource("2_iy4d0")]
 position = Vector2(181, 474)
-bullet_scene = ExtResource("3_qv35b")
 shoot_cooldown = 1.0
 
 [node name="Group enemy1" type="Node" parent="OnTheGround"]
@@ -43,6 +42,13 @@ position = Vector2(1050, 754)
 
 [node name="enemy3" parent="OnTheGround/Group enemy1" instance=ExtResource("4_itj0g")]
 position = Vector2(1050, 495)
+
+[node name="ThrowingEnemy" parent="OnTheGround/Group enemy1" instance=ExtResource("5_qv35b")]
+position = Vector2(675, 435)
+throwing_period = 4.0
+projectile_speed = 500.0
+projectile_duration = 3.0
+projectile_follows_player = true
 
 [node name="Group enemy2" type="Node" parent="OnTheGround"]
 

@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
@@ -240,3 +241,15 @@ func _on_animation_finished():
 		hide()
 		await get_tree().create_timer(2.0).timeout
 		get_tree().reload_current_scene()
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	# Comprobamos si el 'body' que entró está en el grupo "bullet"
+	if body.is_in_group("enemy_projectile"):
+	
+		# 1. Llama a la función de morir (de forma segura)
+		call_deferred("take_damage",1)
+	
+		# 2. Destruye la bala que nos golpeó
+		body.queue_free()
+	pass # Replace with function body.
