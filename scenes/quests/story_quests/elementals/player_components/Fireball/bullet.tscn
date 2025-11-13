@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbdkhhbwd32lu"]
 
 [ext_resource type="Script" uid="uid://upak35ra2dv4" path="res://scenes/quests/story_quests/elementals/player_components/Fireball/bullet.gd" id="1_e1ra6"]
-[ext_resource type="SpriteFrames" uid="uid://bhamin2pby7tq" path="res://scenes/game_elements/props/projectile/components/inkblob_spriteframes.tres" id="2_e1ra6"]
+[ext_resource type="SpriteFrames" uid="uid://61yy0yh5qyr8" path="res://scenes/quests/story_quests/elementals/player_components/Fireball/bullet.tres" id="2_gu25n"]
 [ext_resource type="AudioStream" uid="uid://7jlv4wqpihl7" path="res://scenes/game_elements/props/projectile/components/blob_hit.wav" id="3_gu25n"]
 [ext_resource type="Texture2D" uid="uid://dt5lxkbt5rhw2" path="res://scenes/quests/story_quests/elementals/player_components/Fireball/Light.png" id="4_gu25n"]
 
@@ -14,7 +14,7 @@ size = Vector2(63, 43)
 [node name="Bullet" type="RigidBody2D" groups=["bullet"]]
 z_index = 2
 collision_layer = 256
-collision_mask = 146
+collision_mask = 144
 physics_material_override = SubResource("PhysicsMaterial_e1ra6")
 gravity_scale = 0.0
 contact_monitor = true
@@ -31,9 +31,9 @@ position = Vector2(-3, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisibleThings"]
 unique_name_in_owner = true
-sprite_frames = ExtResource("2_e1ra6")
+sprite_frames = ExtResource("2_gu25n")
 autoplay = "default"
-frame_progress = 0.7687705
+frame_progress = 0.43688214
 
 [node name="TrailFXMarker" type="Marker2D" parent="VisibleThings"]
 unique_name_in_owner = true

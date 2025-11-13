@@ -206,7 +206,7 @@ func _ready() -> void:
 	_set_sprite_frames(sprite_frames)
 	if Engine.is_editor_hint():
 		return
-	var player: Player = get_tree().get_first_node_in_group("player")
+	var player = get_tree().get_first_node_in_group("player")
 	if is_instance_valid(player):
 		var direction: Vector2 = projectile_marker.global_position.direction_to(
 			player.global_position
@@ -299,7 +299,7 @@ func _on_timeout() -> void:
 	print("[ThrowingEnemyelementals] _on_timeout() — timer fired for ", self.name)
 	
 	# --- ESTA ES LA LÍNEA CORREGIDA ---
-	var player: Player = get_tree().get_first_node_in_group("player")
+	var player = get_tree().get_first_node_in_group("player")
 	
 	if not is_instance_valid(player):
 		print("[ThrowingEnemyelementals] no valid player found")
@@ -313,7 +313,7 @@ func shoot_projectile() -> void:
 	print("[ThrowingEnemyelementals] shoot_projectile() called")
 	
 	# --- ESTA ES LA LÍNEA CORREGIDA ---
-	var player: Player = get_tree().get_first_node_in_group("player")
+	var player = get_tree().get_first_node_in_group("player")
 
 	if not is_instance_valid(player):
 		print("[ThrowingEnemyelementals] shoot_projectile: player not valid")

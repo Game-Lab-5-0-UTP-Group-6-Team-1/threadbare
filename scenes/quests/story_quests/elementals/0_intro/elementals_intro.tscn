@@ -162,7 +162,7 @@ libraries = {
 script = ExtResource("4_3p2up")
 dialogue = ExtResource("5_f0gr3")
 animation_player = NodePath("../OnTheGround/AnimationPlayer")
-next_scene = "uid://hqew6sabnygn"
+next_scene = "uid://c3kg1e473t6cx"
 metadata/_custom_type_script = "uid://x1mxt6bmei2o"
 
 [node name="GroupFlowers" type="Node2D" parent="."]
