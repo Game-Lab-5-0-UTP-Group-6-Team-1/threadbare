@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://c3kg1e473t6cx"]
+[gd_scene load_steps=13 format=4 uid="uid://c3kg1e473t6cx"]
 
 [ext_resource type="TileSet" uid="uid://07fq3rspk8ia" path="res://scenes/tileset.tres" id="1_lqeim"]
 [ext_resource type="PackedScene" uid="uid://c2dk88w1i3yey" path="res://scenes/quests/story_quests/elementals/player_components/Jozu/jozu.tscn" id="2_i50ek"]
 [ext_resource type="PackedScene" uid="uid://dn5eeloem4mw3" path="res://scenes/quests/story_quests/elementals/1_room/stealth_components/enemy1.tscn" id="3_oka1a"]
 [ext_resource type="PackedScene" uid="uid://bjbh1ows4s0jt" path="res://scenes/quests/story_quests/elementals/1_room/stealth_components/throwing_enemy_elementals.tscn" id="4_gkqpq"]
-[ext_resource type="SpriteFrames" uid="uid://xa1d60cmdpjf" path="res://scenes/quests/story_quests/elementals/2_combat/combat_components/elementals_throwing_enemy.tres" id="4_p5nme"]
 [ext_resource type="PackedScene" uid="uid://d3jyc0gb5lpap" path="res://scenes/quests/story_quests/elementals/1_room/meta.tscn" id="4_t64rs"]
 [ext_resource type="PackedScene" uid="uid://k6hg11uhespi" path="res://scenes/quests/story_quests/elementals/player_components/Health_Ui.tscn" id="5_t64rs"]
 [ext_resource type="Texture2D" uid="uid://drrig6ejccnl2" path="res://scenes/quests/story_quests/elementals/1_stealth/Tilemap/tilemap_packed_new.png" id="8_tgdsa"]
@@ -6836,7 +6835,6 @@ position = Vector2(2707, 499)
 [node name="ThrowingEnemy7" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3054, 531)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6844,7 +6842,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy8" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3181, 749)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6852,7 +6849,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy9" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4543, 4435)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6860,7 +6856,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy10" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4523, 4888)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6868,7 +6863,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy11" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4663, 4671)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6876,7 +6870,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy13" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3062, 857)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6884,7 +6877,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy14" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3356, 508)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6892,7 +6884,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy20" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3396, 882)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6900,7 +6891,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy2" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4835, 620)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6908,7 +6898,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy3" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4870, 910)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6916,7 +6905,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy23" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4867, 4639)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6924,7 +6912,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy24" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1363, 4489)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6932,7 +6919,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy25" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1365, 4664)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6940,7 +6926,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy26" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4730, 4433)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6948,7 +6933,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy28" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3617, 526)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6956,7 +6940,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy29" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3714, 677)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6964,7 +6947,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy30" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4745, 4915)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6972,7 +6954,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy31" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1138, 4489)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6980,7 +6961,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy32" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1145, 4659)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6988,7 +6968,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy33" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1044, 4833)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -6996,7 +6975,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy34" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3670, 865)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7004,7 +6982,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy35" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(5454, 547)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7012,7 +6989,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy36" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(2978, 4534)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7020,7 +6996,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy37" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(2857, 4739)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7028,7 +7003,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy38" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(2817, 4587)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7036,7 +7010,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy39" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(2679, 4707)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7044,7 +7017,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy40" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(5431, 2053)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7052,7 +7024,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy41" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3742, 2629)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7060,7 +7031,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy42" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3736, 2435)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7068,7 +7038,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy43" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(3736, 2837)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7076,7 +7045,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy44" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(183, 2306)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7084,7 +7052,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy45" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1343, 2186)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7092,7 +7059,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy46" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1134, 2267)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7100,7 +7066,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy48" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(277, 2313)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7108,7 +7073,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy49" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(102, 2306)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7116,7 +7080,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy51" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(5023, 4936)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7124,7 +7087,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy52" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(5123, 4790)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7132,7 +7094,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy5" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(4760, 798)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7140,7 +7101,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy47" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1085, 3167)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7148,7 +7108,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy50" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1179, 3174)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7156,7 +7115,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy54" parent="OnTheGround/Group enemy1" instance=ExtResource("4_gkqpq")]
 position = Vector2(1004, 3167)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7221,7 +7179,6 @@ position = Vector2(714, 4554)
 [node name="ThrowingEnemy" parent="OnTheGround/Group enemy4" instance=ExtResource("4_gkqpq")]
 position = Vector2(5044, 4644)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7229,7 +7186,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy2" parent="OnTheGround/Group enemy4" instance=ExtResource("4_gkqpq")]
 position = Vector2(5072, 4478)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7237,7 +7193,6 @@ projectile_follows_player = true
 [node name="ThrowingEnemy3" parent="OnTheGround/Group enemy4" instance=ExtResource("4_gkqpq")]
 position = Vector2(4956, 4405)
 throwing_period = 4.0
-sprite_frames = ExtResource("4_p5nme")
 projectile_speed = 500.0
 projectile_duration = 3.0
 projectile_follows_player = true
@@ -7387,7 +7342,6 @@ speed = 350.0
 
 [node name="Meta" parent="OnTheGround" instance=ExtResource("4_t64rs")]
 position = Vector2(5455, 4554)
-escena_siguiente = "uid://dwsy2xlsfg6fo"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)
