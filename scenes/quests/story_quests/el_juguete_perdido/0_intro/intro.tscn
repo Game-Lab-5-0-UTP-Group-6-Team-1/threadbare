@@ -103,7 +103,7 @@ _data = {
 &"walk_on": SubResource("Animation_blo5s")
 }
 
-[node name="Intro" type="Node2D"]
+[node name="Intro2" type="Node2D"]
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 modulate = Color(0.783523, 0.783523, 0.783523, 1)
