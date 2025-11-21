@@ -7,7 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://0in7xun5tr8u" path="res://scenes/quests/story_quests/elementals/player_components/player1.tres" id="5_d3s28"]
 [ext_resource type="PackedScene" uid="uid://j8mqjkg0rvai" path="res://scenes/game_elements/props/projectile/projectile.tscn" id="5_h0rqf"]
 [ext_resource type="PackedScene" uid="uid://b82nsrh332syj" path="res://scenes/game_elements/characters/enemies/throwing_enemy/throwing_enemy.tscn" id="6_mjcc6"]
-[ext_resource type="SpriteFrames" uid="uid://xa1d60cmdpjf" path="res://scenes/quests/story_quests/elementals/2_newcombat/combat_components/elementals_throwing_enemy.tres" id="7_gxlqa"]
+[ext_resource type="SpriteFrames" uid="uid://xa1d60cmdpjf" path="res://scenes/quests/story_quests/elementals/2_newcombat/combat_components/elementals_throwing_enemy.tres" id="8_h0rqf"]
 [ext_resource type="SpriteFrames" uid="uid://ckmprarkd025e" path="res://scenes/quests/story_quests/elementals/2_newcombat/combat_components/elementals_projectile_spriteframes.tres" id="8_yr7m2"]
 [ext_resource type="PackedScene" uid="uid://y8ha8abfyap2" path="res://scenes/game_elements/props/filling_barrel/filling_barrel.tscn" id="9_peqeu"]
 [ext_resource type="SpriteFrames" uid="uid://0kh2rxdjp3gd" path="res://scenes/quests/story_quests/elementals/2_newcombat/combat_components/elementals_target_spriteframes.tres" id="10_6t5ir"]
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_fy46p")
 
 [node name="ThrowingNPC" parent="OnTheGround" instance=ExtResource("6_mjcc6")]
 position = Vector2(875, 316)
-sprite_frames = ExtResource("7_gxlqa")
+sprite_frames = ExtResource("8_h0rqf")
 projectile_sprite_frames = ExtResource("8_yr7m2")
 
 [node name="Target" parent="OnTheGround" instance=ExtResource("9_peqeu")]

@@ -10,7 +10,7 @@
 size = Vector2(17.00005, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwaf6"]
-size = Vector2(32, 129)
+size = Vector2(35, 44.5)
 
 [node name="Jozu" type="CharacterBody2D" groups=["player"]]
 z_index = 2
@@ -23,8 +23,8 @@ death_dialogue = ExtResource("3_1y7gw")
 position = Vector2(1.5258789e-05, -74)
 rotation = 6.2831855
 sprite_frames = ExtResource("3_78idv")
-animation = &"attack_back"
-frame = 5
+animation = &"attack_side"
+frame = 6
 frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -75,7 +75,7 @@ collision_layer = 64
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -60)
+position = Vector2(1.5, -17.75)
 shape = SubResource("RectangleShape2D_pwaf6")
 debug_color = Color(0.990065, 0, 0.28292, 0.42)
 
